@@ -1,6 +1,6 @@
 #include<iostream>
 #include<vector>
-
+// Function to check if a move is valid
 bool Valid(std::vector<std::vector<int>>&grid,int x,int y){
     return x >=0 && x < grid.size() && y>=0 && y<grid.size() &&(!grid[x][y] || grid[x][y]==-1);
 }
@@ -38,12 +38,12 @@ bool check_mate(std::vector<std::vector<int>>&grid,int x,int y,int& enemy_x,int&
 }
 void solution(){
     std::vector<std::vector<int>> grid(8,std::vector<int>(8,0));
-    grid[0][0]=-2;//denote the horse.
+    grid[0][0]=-2;//denote the knight.
     int x=7,y=0;
     grid[x][y]=-1; //denotes the king. 
     //knight move.
-    std::vector<int> XMove = { 2, 1, -1, -2, -2, -1, 1, 2 };
-    std::vector<int> YMove = { 1, 2, 2, 1, -1, -2, -2, -1 };
+    std::vector<int> XMove = {2,1,-2,-1,2,1,-2,-1};     //{ 2, 1, -1, -2, -2, -1, 1, 2 };
+    std::vector<int> YMove = {1,2,-1,-2,-1,-2,1,2};      //{ 1, 2, 2, 1, -1, -2, -2, -1 };
     if(check_mate(grid,0,0,x,y,XMove,YMove,1)){
         for(auto x:grid){
             for(auto y: x)
